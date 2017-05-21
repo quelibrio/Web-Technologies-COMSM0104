@@ -5,13 +5,14 @@ var empty_y;
 var scramble_seed = 173;  // [0 .. 299]
 var move_count = -1;
 
+
 function get_image_name(n) {
     return "f" + (n <= 9 ? ("0" + n) : n);
 }
 
 function get_image_src(n) {
-    if (n == 0) return "img/_.gif";
-    else return "img/" + n + ".jpg";
+    if (n == 0) return "img/" + imageFolder + "_.gif";
+    else return "img/" + imageFolder + n + ".jpg";
 }
 
 function get_number_at_position(y, x) {
