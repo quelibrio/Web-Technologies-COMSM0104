@@ -32,48 +32,4 @@ To start node server
 
 ##API
 
-`POST` `auth/register`
-
-Accepts
->     {
->          "username": "username",
->          "password": "password"
->     }
-
-Returns
->     {
->           "result": {
->               "username": "username",
->               "token": "token"
->           }
->     }
-
-`POST` `auth/login`
-
-Accepts
->     {
->          "username": "username",
->          "password": "password"
->     }
-
-Returns
->     {
->           "result": {
->               "username": "username",
->               "token": "token"
->           }
->     }
-
-
-`GET` `auth/me`
-
-Headers:
->      Authorization: bearer <token>
-
-Returns
->     {
->           "result": {
->               "username": "username",
->               "token": "token"
->           }
->     }
+Postman collection here: https://www.getpostman.com/collections/f919b7fb43b8953833ff
