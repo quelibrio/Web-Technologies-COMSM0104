@@ -82,6 +82,14 @@ function process_click(y, x) {
         return;
     }
     process_move(y, x);
+
+    $.post('api', { positionX: x, positionY: y },
+    function (returnedData) {
+        console.log(returnedData);
+    }).fail(function () {
+        console.log("error");
+    });
+
     update_board();
     check_victory();
 }
