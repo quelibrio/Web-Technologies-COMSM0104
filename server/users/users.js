@@ -69,6 +69,7 @@ module.exports = function (sequelize) {
 
     console.log('defined User table');
     return {
+        User,
         'authApi': (app, responders) => {
             const authRouter = express.Router({mergeParams: true});
 
