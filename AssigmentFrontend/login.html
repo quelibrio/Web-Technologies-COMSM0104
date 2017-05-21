@@ -25,9 +25,7 @@
             }
             $.ajax({
                 type: 'POST',
-                //remove the .php from results.php.php
                 url: "http://127.0.0.1:9999/auth/login",
-                //Add the request header
                 //headers: {
                 //    Authorization: 'Bearer ' + 'XXXXXXXXXXXXXXXXXXXXXXXXX'
                 //},
@@ -38,11 +36,15 @@
                     $(location).attr('href', 'index.html');
                 },
                 error: function (xhr, status, error) {
-                    var err = eval("(" + xhr.responseText + ")");
+                    //var err = eval("(" + xhr.responseText + ")");
                     $('#errorMessage').innerHTML = err;
+                },
+                done: function(response) {
                 }
-            }); //End of Ajax
-        }   // End of myFucntion
+                
+            });
+            $('#errorMessage').text("Unable to match username/password.");
+        } 
     </script>
     <div class="container">
         <div class="wrapper">
@@ -57,7 +59,9 @@
                 <div class="login-register form-signin-heading">
                     <a href="register.html">Register</a>
                 </div>
-                <div id="errorMessage"></div>
+                <div class="login-register form-signin-heading">
+                    <p id="errorMessage"></p>
+                </div>
             </form>
         </div>
     </div>
