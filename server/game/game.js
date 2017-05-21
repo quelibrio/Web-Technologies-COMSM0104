@@ -11,13 +11,6 @@ module.exports = function (sequelize, User) {
             timestamps: true,
             tableName: 'game',
             classMethods: {
-                /**
-                 * Authorizes a the user by email and password combination
-                 * @returns {Promise}
-                 * @param gameId
-                 * @param posX
-                 * @param posY
-                 */
                 move: function (gameId, posX, posY) {
                     return GameMove.create({
                         gameId,
@@ -46,7 +39,7 @@ module.exports = function (sequelize, User) {
     GameMove.belongsTo(User);
     Game.belongsToMany(User, {through: 'multiplayer'});
 
-    console.log('defined Game table');
+    console.log('defined Game tables');
     return {
         'gameApi': (app, responders) => {
             const gameRouter = express.Router({mergeParams: true});
