@@ -5,7 +5,6 @@ var empty_y;
 var scramble_seed = 173;  // [0 .. 299]
 var move_count = -1;
 
-
 function get_image_name(n) {
     return "f" + (n <= 9 ? ("0" + n) : n);
 }
@@ -33,8 +32,6 @@ function get_sign(d) {
 }
 
 function process_move(y, x) {
-    
-
     step_x = get_sign(empty_x - x);
     step_y = get_sign(empty_y - y);
     if (step_x != 0 && step_y != 0)
