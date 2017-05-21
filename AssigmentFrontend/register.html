@@ -18,32 +18,43 @@
     <script>
         function completeAndRedirect() {
             var username = $('#username')[0];
+            var confirm = $('#confirm')[0];
+            
             var password = $('#password')[0];
+            if (confirm.value != password.value) {
+                $('#errorMessage').text("Passwords dont match.");
+            } else if(password.value.length < 5 || password.value.length > 20) {
+                $('#errorMessage').text("Passwords must be between 5 and 20 symbols");
+            }
+            else {
             var dataValue = {
                 username: username.value,
                 password: password.value,
             }
             $.ajax({
-                type: 'POST',
-                url: "http://127.0.0.1:9999/auth/register",
-                //headers: {
-                //    Authorization: 'Bearer ' + 'XXXXXXXXXXXXXXXXXXXXXXXXX'
-                //},
-                contentType: 'application/x-www-form-urlencoded',
-                //Add form data
-                data: dataValue,
-                success: function (response) {
-                    $(location).attr('href', 'index.html');
-                },
-                error: function (xhr, status, error) {
-                    //var err = eval("(" + xhr.responseText + ")");
-                    $('#errorMessage').innerHTML = err;
-                },
-                done: function(response) {
-                }
+                    type: 'POST',
+                    url: "http://127.0.0.1:9999/auth/register",
+                    //headers: {
+                    //    Authorization: 'Bearer ' + 'XXXXXXXXXXXXXXXXXXXXXXXXX'
+                    //},
+                    contentType: 'application/x-www-form-urlencoded',
+                    //Add form data
+                    data: dataValue,
+                    success: function (response) {
+                        localStorage.setItem("token", response.token);
+                        $(location).attr('href', 'index.html');
+                    },
+                    error: function (xhr, status, error) {
+                        //var err = eval("(" + xhr.responseText + ")");
+                        $('#errorMessage').innerHTML = err;
+                    },
+                    done: function(response) {
+                    }
 
-            });
-            $('#errorMessage').text("Unable to create an user with that name.");
+                });
+        
+                $('#errorMessage').text("Unable to create an user with that name.");
+            }
         }
     </script>
 <div class="container">

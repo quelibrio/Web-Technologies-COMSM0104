@@ -33,6 +33,7 @@
                 //Add form data
                 data: dataValue,
                 success: function (response) {
+                    localStorage.setItem("token", response.token);
                     $(location).attr('href', 'index.html');
                 },
                 error: function (xhr, status, error) {
