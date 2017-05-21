@@ -27,6 +27,7 @@ module.exports = function (sequelize, User) {
                 }
             },
             instanceMethods: {
+<<<<<<< .merge_file_a06532
                 encryptPassword: function (plainPassword) {
                     return crypto
                         .createHmac('sha512', this.salt)
@@ -38,6 +39,10 @@ module.exports = function (sequelize, User) {
                 },
                 toJSON: function () {
                     return _.pick(this, ['field', 'userId', 'id'])
+=======
+                toJSON: function () {
+                    return _.pick(this, ['field', 'userId', 'id', 'createdAt'])
+>>>>>>> .merge_file_a07756
                 }
             }
         });
@@ -73,6 +78,7 @@ module.exports = function (sequelize, User) {
                 userId: req.user.id
             }).then((r) => responders.respondResult(res, r)).catch(next));
 
+<<<<<<< .merge_file_a06532
             gameRouter.post('/:gameId/move/:moveId', (req, res, next) => GameMove.create({
                 id: 1 + (+req.params.moveId),
                 gameId: req.game.id,
@@ -80,6 +86,27 @@ module.exports = function (sequelize, User) {
                 posX: req.body.posX,
                 posY: req.body.posY
             }).then((r) => responders.respondResult(res, r)).catch(next));
+=======
+            gameRouter.post('/:gameId/move/:moveId', (req, res, next) => GameMove.findOne({
+                where: {
+                    gameId: req.game.id,
+                    id: {
+                        $gt: req.params.moveId
+                    }
+                }
+            }).then((r) => {
+                if (r) {
+                    next(new Error('Update state.'))
+                } else {
+                    GameMove.create({
+                        gameId: req.game.id,
+                        userId: req.user.id,
+                        posX: req.body.posX,
+                        posY: req.body.posY
+                    }).then((r) => responders.respondResult(res, r)).catch(next)
+                }
+            }));
+>>>>>>> .merge_file_a07756
 
             gameRouter.get('/:gameId/after/:moveId', (req, res, next) => GameMove.findAndCountAll({
                 where: {
@@ -88,7 +115,11 @@ module.exports = function (sequelize, User) {
                         $gt: +req.params.moveId
                     }
                 }
+<<<<<<< .merge_file_a06532
             }).then((r) => responders.respondResult(res, _.map(r.rows, _.partial(_.pick, _, ['posX', 'posY', 'userId'])))).catch(next));
+=======
+            }).then((r) => responders.respondResult(res, _.chain(r.rows).map(_.partial(_.pick, _, ['posX', 'posY', 'userId', 'createdAt', 'id'])).sortBy('id').value())).catch(next));
+>>>>>>> .merge_file_a07756
 
             app.use('/game', responders.ensureAuthenticated('user'), gameRouter);
 
