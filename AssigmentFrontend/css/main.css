@@ -352,4 +352,24 @@ textarea {
     .navbar>.container-fluid .navbar-brand-centered {
         margin-left: -80px;
     }
+
+    img {
+        font-family: sans-serif;
+        font-weight: bold;
+        -moz-filter: blur(9px);
+        -ms-filter: blur(9px);
+        -o-filter: blur(9px);
+        filter: blur(9px);
+        -webkit-filter: blur(9px);
+        -webkit-transition: -webkit-filter .50s;
+    }
+
+    h1:hover, img:hover{
+        -webkit-filter: none;
+        -moz-filter: none;
+        -ms-filter: none;
+        -o-filter: none;
+        filter: none;
+        -webkit-transition: -webkit-filter .50s;
+    }
 }

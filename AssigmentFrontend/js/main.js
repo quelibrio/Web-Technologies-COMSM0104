@@ -33,6 +33,8 @@ function get_sign(d) {
 }
 
 function process_move(y, x) {
+    
+
     step_x = get_sign(empty_x - x);
     step_y = get_sign(empty_y - y);
     if (step_x != 0 && step_y != 0)
@@ -83,12 +85,15 @@ function process_click(y, x) {
     }
     process_move(y, x);
 
-    $.post('api', { positionX: x, positionY: y },
-    function (returnedData) {
-        console.log(returnedData);
-    }).fail(function () {
-        console.log("error");
-    });
+    //$.post('api', { positionX: x, positionY: y },
+    //function (returnedData) {
+    //    console.log(returnedData);
+    //}).fail(function () {
+    //    console.log("error");
+    //});
+
+    //var name = tcol1;
+    //$('img[name=' + name + ']')
 
     update_board();
     check_victory();
