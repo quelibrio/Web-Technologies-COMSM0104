@@ -66,6 +66,7 @@ module.exports = function (sequelize, User) {
 
             gameRouter.post('/:gameId/move/:moveId', (req, res, next) => GameMove.findOne({
                 where: {
+                    gameId: req.game.id,
                     id: {
                         $gt: req.params.moveId
                     }
