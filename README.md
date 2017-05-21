@@ -17,3 +17,15 @@ HTTP POST - GetHighscores() - returns sorted hihscores by time and moves
 
 BONUS:
 Image splitting and some html 5 effects
+
+##Instructions
+
+To start node server
+
+`cd server`
+
+`delete node_modules folder` (if needed)
+
+`npm install`
+
+`node server.js` *or* `(if using WebStorm)Menu > Run > Run 'server'`
