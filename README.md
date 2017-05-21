@@ -29,3 +29,48 @@ To start node server
 `npm install`
 
 `node server.js` *or* `(if using WebStorm)Menu > Run > Run 'server'`
+
+##API
+
+`POST` `auth/register`
+
+Accepts
+>     {
+>          "username": "username",
+>          "password": "password"
+>     }
+
+Returns
+>     {
+>           "result": {
+>               "username": "username",
+>               "token": "token"
+>           }
+>     }
+
+`POST` `auth/login`
+
+Accepts
+>     {
+>          "username": "username",
+>          "password": "password"
+>     }
+
+Returns
+>     {
+>           "result": {
+>               "username": "username",
+>               "token": "token"
+>           }
+>     }
+
+
+`GET` `auth/me?token=<token>`
+
+Returns
+>     {
+>           "result": {
+>               "username": "username",
+>               "token": "token"
+>           }
+>     }

@@ -26,12 +26,11 @@ function handleCors(req, res, next) {
     }
 }
 
-module.exports = function () {
-    return function (app) {
-        app.use(handleCors);
-        app.use(bodyParser.urlencoded({
-            extended: true
-        }));
-        app.use(bodyParser.text());
-    };
+module.exports = function (app) {
+    app.use(handleCors);
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+    app.use(bodyParser.json());
+    app.use(bodyParser.text());
 };

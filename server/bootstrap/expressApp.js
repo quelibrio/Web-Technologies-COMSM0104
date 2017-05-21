@@ -2,6 +2,7 @@
 const Sequelize = require('sequelize');
 const express = require('express');
 const setupBeforeRequest = require('./setupBeforeRequest');
+const setupAfterRequest = require('./setupAfterRequest');
 
 const sequelize = new Sequelize('database', 'username', 'password', {
     host: 'localhost',
@@ -30,7 +31,6 @@ const startServer = function (done) {
     }
 
     setupBeforeRequest(app);
-
     function cb(err) {
         if (err) {
             console.error('Server start error!', err);
@@ -41,7 +41,8 @@ const startServer = function (done) {
             .authenticate()
             .then(() => {
                 console.log('Connection to database has been established successfully.');
-                done(null, app);
+                done(null, app, sequelize);
+                setupAfterRequest(app);
             })
             .catch(done);
     }
