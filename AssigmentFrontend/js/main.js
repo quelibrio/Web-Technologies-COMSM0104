@@ -50,8 +50,7 @@ function update_board() {
     for (i = 0; i < 16; i++) {
         if (dirty[i]) {
             //alert("in=" + get_image_name(i) + ", i=" + i + ", is=" + get_image_src(numbers[i]));
-            document.images[get_image_name(i)].src =
-                get_image_src(numbers[i]);
+            document.images[get_image_name(i)].src = get_image_src(numbers[i]);
             dirty[i] = 0;
         }
     }
