@@ -65,7 +65,10 @@ Returns
 >     }
 
 
-`GET` `auth/me?token=<token>`
+`GET` `auth/me`
+
+Headers:
+>      Authorization: bearer <token>
 
 Returns
 >     {
