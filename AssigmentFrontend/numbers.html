@@ -16,7 +16,7 @@
     <script src="js/main.js" type="text/javascript"></script>
     <script>
         var imageFolder = "image0/";
-        checkUser();
+        init();
     </script>
 </head>
 <body>
@@ -67,6 +67,9 @@
 
     <br/>
     <form>
+        <div class="login-register form-signin-heading">
+            <p id="errorMessage"></p>
+        </div>
         <input type=button name="solve" value=" Solve " onclick=" reset_numbers() ">
         <input type=button name="scramble" value=" Scramble " onclick=" scramble_numbers() ">
         <input type=button name="scramble" value=" Pseudo Solve " onclick=" pseudo_reset_numbers() ">

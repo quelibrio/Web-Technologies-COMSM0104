@@ -4,6 +4,38 @@ var empty_x;
 var empty_y;
 var scramble_seed = 173;  // [0 .. 299]
 var move_count = -1;
+var move = 0;
+
+function init() {
+    checkUser();
+    createGame();
+}
+function createGame() {
+    var token = localStorage.getItem("token");
+    var result;
+    $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:9999/game",
+        headers: {
+            Authorization: 'Bearer ' + token
+        },
+        contentType: 'application/x-www-form-urlencoded',
+        //Add form data
+        data: {
+            "field": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,x"
+        },
+        success: function (response) {
+            gameId = response.result.id;
+        },
+        error: function (xhr, status, error) {
+            $('#errorMessage').innerHTML = error;
+            return -1;
+        },
+        done: function (response) {
+        }
+    });
+}
+
 
 function checkUser() {
     var token = localStorage.getItem("token");
@@ -87,22 +119,42 @@ function process_click(y, x) {
         window.status = "This piece can not move";
         return;
     }
-    process_move(y, x);
-
-    //$.post('api', { positionX: x, positionY: y },
-    //function (returnedData) {
-    //    console.log(returnedData);
-    //}).fail(function () {
-    //    console.log("error");
-    //});
 
     //var name = tcol1;
     //$('img[name=' + name + ']')
+    saveToDb(y, x);
 
+    process_move(y, x);
     update_board();
 
     check_victory();
 }
+
+function saveToDb(y, x) {
+    var token = localStorage.getItem("token");
+    $.ajax({
+        type: 'POST',
+        url: "http://127.0.0.1:9999/game/" + gameId + "/move/" + move,
+        headers: {
+            Authorization: 'Bearer ' + token
+        },
+        contentType: 'application/x-www-form-urlencoded',
+        //Add form data
+        data: {
+            "posX" : y,
+            "posY" : x
+        },
+        success: function (response) {
+        },
+        error: function (xhr, status, error) {
+            $('#errorMessage').innerHTML = error;
+        },
+        done: function (response) {
+        }
+    });
+    move=move+1
+}
+
 
 function reset_numbers() {
     for (y = 1; y <= 4; y++) {
