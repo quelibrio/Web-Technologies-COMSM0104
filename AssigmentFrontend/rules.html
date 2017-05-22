@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game 15</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>') </script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a id="username"></a></li>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li class="active"><a href="rules.html">Rules</a></li>
+            <li class="active"><a href="highscore.html">Highscores</a></li>
+            <li class="active" id="logout"><a>Logout</a></li>
+        </ul>
+    </nav>
+    <h1 align="center">Rules</h1>
+    <div class="container" align="center">
+        <h4>This is a modification of the original game 15. It has blur effect and numbers are fading. To compete the game you must order all tiles from 1 to 15 and the last tile should be the empty one. Good luck!</h4>
+    </div>
+    <script>
+        $("#logout").click(function () {
+            localStorage.setItem("token", "");
+            localStorage.setItem("username", "");
+            $(location).attr('href', 'login.html');
+        });
+        var username = localStorage.getItem("username");
+        $('#username').text('Hello ' + username);
+
+    </script>
+</body>
+</html>
