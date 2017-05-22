@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game 15</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script> window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>') </script>
+    <script>
+        var imageFolder = "image3/";
+    </script>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script>
+        init();
+    </script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a id="username"></a></li>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li class="active"><a href="rules.html">Rules</a></li>
+            <li class="active"><a href="highscore.html">Highscores</a></li>
+            <li class="active" id="logout"><a>Logout</a></li>
+        </ul>
+    </nav>
+    <div align="center">
+        <table cellspacing=0 cellpadding=0 border=2 bgcolor="#FFFFFF">
+            <tr>
+                <td><img title="1" onclick=" javascript:process_click(1, 1) " class="cell" name="f00" alt="(01)"></td>
+                <td><img title="2" onclick=" javascript:process_click(1, 2) " class="cell" name="f01" alt="(02)"></td>
+                <td><img title="3" onclick=" javascript:process_click(1, 3) " class="cell" name="f02" alt="(03)"></td>
+                <td><img title="4" onclick=" javascript:process_click(1, 4) " class="cell" name="f03" alt="(04)"></td>
+            </tr>
+            <tr>
+                <td><img title="5" onclick=" javascript:process_click(2, 1) " class="cell" name="f04" alt="(05)"></td>
+                <td><img title="6" onclick=" javascript:process_click(2, 2) " class="cell" name="f05" alt="(06)"></td>
+                <td><img title="7" onclick=" javascript:process_click(2, 3) " class="cell" name="f06" alt="(07)"></td>
+                <td><img title="8" onclick=" javascript:process_click(2, 4) " class="cell" name="f07" alt="(08)"></td>
+            </tr>
+            <tr>
+                <td><img title="9" onclick=" javascript:process_click(3, 1) " class="cell" name="f08" alt="(09)"></td>
+                <td><img title="10" onclick=" javascript:process_click(3, 2) " class="cell" name="f09" alt="(10)"></td>
+                <td><img title="11" onclick=" javascript:process_click(3, 3) " class="cell" name="f10" alt="(11)"></td>
+                <td><img title="12" onclick=" javascript:process_click(3, 4) " class="cell" name="f11" alt="(12)"></td>
+            </tr>
+            <tr>
+                <td><img title="13" onclick=" javascript:process_click(4, 1) " class="cell" name="f12" alt="(13)"></td>
+                <td><img title="14" onclick=" javascript:process_click(4, 2) " class="cell" name="f13" alt="(14)"></td>
+                <td><img title="15" onclick=" javascript:process_click(4, 3) " class="cell" name="f14" alt="(15)"></td>
+                <td><img title="." onclick=" javascript:process_click(4, 4) " class="cell" name="f15" alt="(__)"></td>
+            </tr>
+        </table>
+
+        <br />
+        <form>
+            <input type=button name="solve" value=" Solve " onclick=" reset_numbers() ">
+            <input type=button name="scramble" value=" Scramble " onclick=" scramble_numbers() ">
+            <input type=button name="scramble" value=" Pseudo Solve " onclick=" pseudo_reset_numbers() ">
+            <div class="login-register form-signin-heading">
+                <p id="winMessage"></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        postSetup();
+    </script>
+</body>
+</html>
+
