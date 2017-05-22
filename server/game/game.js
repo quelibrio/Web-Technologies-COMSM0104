@@ -44,6 +44,15 @@ module.exports = function (sequelize, User) {
         'gameApi': (app, responders) => {
             const gameRouter = express.Router({mergeParams: true});
 
+            gameRouter.get('/highscore', (req, res, next) => GameMove.findAll({
+                order: [['posX', 'DESC']],
+                include: [{model: User, required: true}],
+                limit: 10
+            }).then((gameMoves) => _.map(gameMoves, (gm) => ({
+                name: gm.user.username,
+                moves: gm.posX
+            }))).then(responders.respondResult.bind(null, res)).catch(next));
+
             gameRouter.use('/:gameId', (req, res, next) => Game.findOne({where: {id: req.params.gameId}}).then((game) => {
                 if (!game) {
                     return next(new Error('Game not found', req.params.gameId));
@@ -86,6 +95,7 @@ module.exports = function (sequelize, User) {
                 }
             }).then((r) => responders.respondResult(res, _.chain(r.rows).map(_.partial(_.pick, _, ['posX', 'posY', 'userId', 'createdAt', 'id'])).sortBy('id').value()))
                 .catch(next));
+
 
             app.use('/game', responders.ensureAuthenticated('user'), gameRouter);
 
