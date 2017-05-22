@@ -37,6 +37,14 @@ img.tile {
     filter: none;
 }
 
+.svg-img {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+}
+
 /* LOGIN */
 .wrapper {
     margin-top: 80px;
