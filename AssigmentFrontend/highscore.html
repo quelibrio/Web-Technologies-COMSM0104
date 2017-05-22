@@ -28,21 +28,28 @@
         <li class="active" id="logout"><a>Logout</a></li>
     </ul>
 </nav>
+    <div >
+        <h1 align="center">Highscores</h1>
+        <div class="container" align="center">
+            <h4>List of the players that solved it in least moves. Time highscorese to be added.</h4>
+        </div>
+        <ul align="center" id="highscores"></ul>
+    </div>
 <script>
     var token = localStorage.getItem("token");
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: "http://127.0.0.1:9999/game/highscore",
         headers: {
             Authorization: 'Bearer ' + token
         },
         contentType: 'application/x-www-form-urlencoded',
-        //Add form data
-        data: {
-            "field": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,x"
-        },
         success: function (response) {
-            
+            $.each(response.result, function (key, obj) {
+                $('<li />', {
+                    text: obj.name + " " + obj.moves
+                }).appendTo('#highscores')
+            });
         },
         error: function (xhr, status, error) {
         },
@@ -50,10 +57,6 @@
         }
     });
 </script>
-    <h1 align="center">Highscores</h1>
-    <div class="container" align="center">
-        <h4>List of the players that solved it in least moves. Time highscorese to be added.</h4>
-    </div>
     <script>
         $("#logout").click(function () {
             localStorage.setItem("token", "");
