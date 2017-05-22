@@ -26,16 +26,25 @@
     <![endif]-->
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="register.html">Register</a></li>
-            <li class="active"><a href="login.html">Login</a></li>
-            <li class="active"><a href="numbers.html">Numbers</a></li>
-            <li class="active"><a href="beach.html">Beach</a></li>
-            <li class="active"><a href="">Highscores</a></li>
+            <li class="active"><a id="username"></a></li>
+            <li class="active"><a href="register.html">Home</a></li>
+            <li class="active"><a href="highscore.html">Highscores</a></li>
+            <li class="active"><a>Logout</a></li>
         </ul>
     </nav>
     <h1 align="center">Play the Fifteen puzzle online</h1>
-    <div align="center">
-    </div>
+     <div class="container" align="center">
+            <div class="row">
+                <img class="col-4 tile" src="img/Tiles/tile1.jpg"/>
+                <img class="col-4 tile" src="img/Tiles/tile2.jpg"/>
+                <img class="col-4 tile" src="img/Tiles/tile2.jpg" />
+            </div>
+            <div class="row">
+            </div>
+        </div>
+    <script>
+        var username = localStorage.getItem("username");
+        $('#username').text('Hello ' + username);
+    </script>
 </body>
 </html>
-
