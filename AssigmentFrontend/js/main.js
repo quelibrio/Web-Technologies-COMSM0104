@@ -9,6 +9,7 @@ var move = 0;
 function init() {
     checkUser();
     createGame();
+  
 }
 function createGame() {
     var token = localStorage.getItem("token");
@@ -36,6 +37,17 @@ function createGame() {
     });
 }
 
+function postSetup() {
+    var username = localStorage.getItem("username");
+    $('#username').text('Hello ' + username);
+
+    $("#logout").click(function () {
+        localStorage.setItem("token", "");
+        localStorage.setItem("username", "");
+        $(location).attr('href', 'login.html');
+    });
+    scramble_numbers();
+}
 
 function checkUser() {
     var token = localStorage.getItem("token");
@@ -89,7 +101,12 @@ function update_board() {
     for (i = 0; i < 16; i++) {
         if (dirty[i]) {
             //alert("in=" + get_image_name(i) + ", i=" + i + ", is=" + get_image_src(numbers[i]));
-            document.images[get_image_name(i)].src = get_image_src(numbers[i]);
+            var imageName = get_image_name(i);
+            var imageSrc = get_image_src(numbers[i]);
+            if (document.images[imageName]) {
+                document.images[imageName].src = imageSrc;
+                document.images[imageName].title = numbers[i];
+            }
             dirty[i] = 0;
         }
     }
@@ -109,7 +126,9 @@ function check_victory() {
         if (numbers[i] != i + 1 && i != 15)
             return;
     }
-    alert("Congratulation, you did it in " + move_count + " moves.");
+    $('img').addClass('tile');
+    $('#winMessage').text('Congratulation, you did it in ' + move_count + ' moves!"')
+    saveToDb(move_count, move_count);
     move_count = -1;
 }
 
@@ -122,7 +141,7 @@ function process_click(y, x) {
 
     //var name = tcol1;
     //$('img[name=' + name + ']')
-    saveToDb(y, x);
+    
 
     process_move(y, x);
     update_board();
@@ -152,7 +171,7 @@ function saveToDb(y, x) {
         done: function (response) {
         }
     });
-    move=move+1
+    move = move + 1;
 }
 
 

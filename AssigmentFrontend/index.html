@@ -1,13 +1,12 @@
 ﻿<!doctype html>
-<html class="no-js" lang="">
+<html lang="">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Game 15</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game 15</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -17,34 +16,37 @@
     <script src="js/main.js" type="text/javascript"></script>
     <script>
         var imageFolder = "image0/";
-        checkUser();
     </script>
 </head>
 <body>
     <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav">
             <li class="active"><a id="username"></a></li>
-            <li class="active"><a href="register.html">Home</a></li>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li class="active"><a href="rules.html">Rules</a></li>
             <li class="active"><a href="highscore.html">Highscores</a></li>
-            <li class="active"><a>Logout</a></li>
+            <li class="active" id="logout"><a href="">Logout</a></li>
         </ul>
     </nav>
     <h1 align="center">Play the Fifteen puzzle online</h1>
-     <div class="container" align="center">
-            <div class="row">
-                <img class="col-4 tile" src="img/Tiles/tile1.jpg"/>
-                <img class="col-4 tile" src="img/Tiles/tile2.jpg"/>
-                <img class="col-4 tile" src="img/Tiles/tile2.jpg" />
-            </div>
-            <div class="row">
-            </div>
+    <div class="container" align="center">
+        <div class="row">
+            <a href="game1.html"><img class="col-4 tile" src="img/Tiles/tile1.jpg"/></a>
+            <a href="game2.html"><img class="col-4 tile" src="img/Tiles/tile2.jpg"/></a>
+            <a href="game3.html"><img class="col-4 tile" src="img/Tiles/tile2.jpg"/></a>
         </div>
+        <br/>
+        <div class="row">
+            <a href="game4.html"><img class="col-4 tile" src="img/Tiles/tile1.jpg" /></a>
+            <a href="game5.html"><img class="col-4 tile" src="img/Tiles/tile2.jpg" /></a>
+            <a href="game6.html"><img class="col-4 tile" src="img/Tiles/tile2.jpg" /></a>
+        </div>
+    </div>
     <script>
-        var username = localStorage.getItem("username");
-        $('#username').text('Hello ' + username);
     </script>
 </body>
 </html>
