@@ -40,8 +40,8 @@
                     //Add form data
                     data: dataValue,
                     success: function (response) {
-                        localStorage.setItem("token", response.token);
-                        localStorage.setItem("user", response.username);
+                        localStorage.setItem("token", response.result.token);
+                        localStorage.setItem("username", response.result.username);
                         $(location).attr('href', 'index.html');
                     },
                     error: function (xhr, status, error) {

@@ -5,6 +5,13 @@ var empty_y;
 var scramble_seed = 173;  // [0 .. 299]
 var move_count = -1;
 
+function checkUser() {
+    var token = localStorage.getItem("token");
+    var user = localStorage.getItem("username");
+    if (!user || !token)
+        $(location).attr('href', 'login.html');
+}
+
 function get_image_name(n) {
     return "f" + (n <= 9 ? ("0" + n) : n);
 }
@@ -93,6 +100,7 @@ function process_click(y, x) {
     //$('img[name=' + name + ']')
 
     update_board();
+
     check_victory();
 }
 
