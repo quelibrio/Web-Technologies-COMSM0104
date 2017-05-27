@@ -33,3 +33,13 @@ To start node server
 ##API
 
 Postman collection here: https://www.getpostman.com/collections/f919b7fb43b8953833ff
+
+Secondary Task
+
+-Reuse USers and authentication
+
+-change game to recipy
+
+-implement POST SearchRecipy(String) -  returns list of recipyIds
+
+-implment POST GET Recipy(RecipyId)- list of the columns of the table
