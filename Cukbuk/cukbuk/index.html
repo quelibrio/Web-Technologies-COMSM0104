@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
   <head>
@@ -21,10 +21,9 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">	
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../bootstrap/dist/js/script.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
     <script type="text/javascript">
 		$(document).ready(function(){
 			//$('#carousel-490290').carousel({interval:1000});//carosel every second
@@ -38,43 +37,10 @@
             var username = localStorage.getItem("username");
             $('#username').text('Hello ' + username);
 
-            $('#insearch').click(function(){
-                var searchstr = $('#inrecipe')[0];
-                var params ={
-                    searchstr: searchstr.value
-                };
-                $.ajax({
-                    type:'get',
-                    url: "./search",
-                    dataType:'json',
-                    cache:false,
-                    data:params,
-                    success: function(response){
-                        localStorage.setItem();
-                    }
-                });
-            })
+		    $('#insearch').click(function() {
+		        search();
+		    });
 
-            var token = localStorage.getItem("token");
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:9999/game/highscore",
-                headers: {
-                    Authorization: 'Bearer ' + token
-                },
-                contentType: 'application/x-www-form-urlencoded',
-                success: function (response) {
-                    $.each(response.result, function (key, obj) {
-                        $('<li />', {
-                            text: obj.name + " " + obj.moves
-                        }).appendTo('#highscores')
-                    });
-                },
-                error: function (xhr, status, error) {
-                },
-                done: function (response) {
-                }
-            });
 		}); 	
     </script>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -120,7 +86,8 @@
 		<form class="navbar-form navbar-left" ><!-- role="search" method="get" action="javascript:search();"-->
 			<div class="form-group form-group-sm" style="padding: 0px 10px 0px;">
 				<input class="form-control" id="inrecipe" type="text" style="width:400px" placeholder="Search recipes ..."/>
-			</div> <button type="submit" class="searchrecipe" id="insearch" style="width:100px">Cook!</button>
+		    </div> <button type="submit" class="searchrecipe" id="insearch" style="width: 100px">Cook!</button>
+            <div id="search_result"></div>
 		</form>
 		</div>
 	  </div>

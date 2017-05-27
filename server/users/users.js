@@ -38,9 +38,9 @@ module.exports = function (sequelize) {
                  * @returns {Promise}
                  */
                 authorize: function ({username, password}) {
-                    return User.findOne({
+                    return User.findOne({where: {
                         username
-                    }).then(function (foundUser) {
+                    }}).then(function (foundUser) {
                         if (!foundUser) {
                             throw new Error('User not found');
                         } else if (password && !foundUser.authenticate(password)) {
