@@ -39,7 +39,9 @@ module.exports = function (sequelize) {
                  */
                 authorize: function ({username, password}) {
                     return User.findOne({
-                        username
+                        where: {
+                            username
+                        }
                     }).then(function (foundUser) {
                         if (!foundUser) {
                             throw new Error('User not found');
@@ -60,26 +62,21 @@ module.exports = function (sequelize) {
                 },
                 authenticate: function (password) {
                     return this.password === this.encryptPassword(password);
-                },
-                toJSON: function () {
-                    return _.pick(this, ['username', 'token'])
                 }
             }
         });
 
-    console.log('defined User table');
     return {
         User,
         'authApi': (app, responders) => {
             const authRouter = express.Router({mergeParams: true});
 
-            authRouter.post('/login', responders.ensureAuthenticated('userLogin'), (req, res) => responders.respondResult(res, req.user));
-            authRouter.get('/me', responders.ensureAuthenticated('user'), (req, res) => responders.respondResult(res, req.user));
+            authRouter.post('/login', responders.checkAuthentication('userLogin'), (req, res) => responders.respondResult(res, req.user));
+            authRouter.get('/me', responders.checkAuthentication('user'), (req, res) => responders.respondResult(res, req.user));
             authRouter.post('/register', (req, res, next) => User.create(_.pick(req.body, ['username', 'password']))
                 .then(user => responders.respondResult(res, user))
                 .catch(next));
             app.use('/auth', authRouter);
-            console.log('registered auth api /auth');
         },
         'usersPassport': () => {
             const userLoginStrategy = require('./userLoginStrategy');
@@ -87,7 +84,6 @@ module.exports = function (sequelize) {
 
             passport.use('userLogin', userLoginStrategy(User));
             passport.use('user', userTokenStrategy(User));
-            console.log('registered user passport strategies');
         }
     };
 };

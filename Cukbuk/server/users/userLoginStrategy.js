@@ -6,7 +6,7 @@ module.exports = function (User) {
         try {
             User.authorize({username, password}).then((user) => done(null, user, {
                 strategy: 'user'
-            }));
+            })).catch(done);
         } catch (err) {
             done(err);
         }
