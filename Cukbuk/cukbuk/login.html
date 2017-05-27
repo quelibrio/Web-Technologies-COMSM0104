@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <title>Admin</title>
+</head>
+<body>
+    <script>
+        function completeAndRedirect() {
+            var username = $('#username')[0];
+            var password = $('#password')[0];
+            var dataValue = {
+                username: username.value,
+                password: password.value,
+            }
+            $.ajax({
+                type: 'POST',
+                url: "http://127.0.0.1:9999/auth/login",
+                //headers: {
+                //    Authorization: 'Bearer ' + 'XXXXXXXXXXXXXXXXXXXXXXXXX'
+                //},
+                contentType: 'application/x-www-form-urlencoded',
+                //Add form data
+                data: dataValue,
+                success: function (response) {
+                    localStorage.setItem("token", response.result.token);
+                    localStorage.setItem("username", response.result.username);
+                    $(location).attr('href', 'index.html');
+                },
+                error: function (xhr, status, error) {
+                    //var err = eval("(" + xhr.responseText + ")");
+                    $('#errorMessage').innerHTML = err;
+                },
+                done: function(response) {
+                }
+                
+            });
+            $('#errorMessage').text("Unable to match username/password.");
+        } 
+    </script>
+    <div class="container">
+        <div class="wrapper">
+            <form action="javascript:completeAndRedirect();" method="post" name="Login_Form" class="form-signin">
+                <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+                <hr class="colorgraph"><br>
+
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="" autofocus="" />
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" />
+                <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit">Login</button>
+                <br />
+                <div class="login-register form-signin-heading">
+                    <a href="register.html">Register</a>
+                </div>
+                <div class="login-register form-signin-heading">
+                    <p id="errorMessage"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

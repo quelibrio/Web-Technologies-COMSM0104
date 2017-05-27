@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <title>Admin</title>
+</head>
+<body>
+    <script>
+        function completeAndRedirect() {
+            var username = $('#username')[0];
+            var password = $('#password')[0];
+            var confirm = $('#confirm')[0];
+
+            if (confirm.value != password.value) {
+                $('#errorMessage').text("Passwords dont match.");
+            } else if (password.value.length < 5 || password.value.length > 20) {
+                $('#errorMessage').text("Passwords must be between 5 and 20 symbols");
+            }
+            else {
+                var dataValue = {
+                    username: username.value,
+                    password: password.value,
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: "http://127.0.0.1:9999/auth/register",
+                    //headers: {
+                    //    Authorization: 'Bearer ' + 'XXXXXXXXXXXXXXXXXXXXXXXXX'
+                    //},
+                    contentType: 'application/x-www-form-urlencoded',
+                    //Add form data
+                    data: dataValue,
+                    success: function (response) {
+                        localStorage.setItem("token", response.result.token);
+                        localStorage.setItem("username", response.result.username);
+                        $(location).attr('href', 'index.html');
+                    },
+                    error: function (xhr, status, error) {
+                        //var err = eval("(" + xhr.responseText + ")");
+                        $('#errorMessage').innerHTML = err;
+                    },
+                    done: function (response) {
+                    }
+
+                });
+
+                $('#errorMessage').text("Unable to create an user with that name.");
+            }
+        }
+    </script>
+    <div class="container">
+        <div class="row main wrapper form-register">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Game 15 Registration</h1>
+                    <hr />
+                    <hr class="colorgraph"><br>
+                </div>
+            </div>
+            <div class="main-login main-center">
+                <form action="javascript:completeAndRedirect();" class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                    </div>
+                    <div class="login-register form-signin-heading">
+                        <a href="login.html">Login</a>
+                    </div>
+                    <div class="login-register form-signin-heading">
+                        <p id="errorMessage"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
