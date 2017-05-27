@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Order @ CookBook</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../bootstrap/dist/css/cookbook.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">	
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
+	<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" name="refresh" id="webtitle" href="admin.html">CukBuk</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav navbar-left" style="padding: 0px 30px 0px;">
+			<li class="active"><a name="refresh" id="homepage" href="admin.html">Home</a></li>
+			<li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+				<li class="dropdown-submenu"><a href="search.html" class="searchrecipe">Cuisine</a>
+				</li>
+				<li><a href="search.html" class="searchrecipe">Material</a></li>
+				<li><a href="search.html" class="searchrecipe">Meal</a></li>
+			  </ul>
+			</li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a id="create" href="./create.html"> Create a recipe </a></li>
+			<li><a href="user.html" id="usrname"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Username</a></li> 
+			<li><a href="admin.html" id="logout"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log out</a></li>
+			<li><a name="aboutus" href="aboutus.html">About us</a></li>
+		  </ul>
+
+		<form class="navbar-form navbar-left" method="get" action="search.html"><!--role="search" -->
+			<div class="form-group form-group-sm" style="padding: 0px 10px 0px;">
+				<input class="form-control" id="inrecipe" type="text" style="width:400px" placeholder="Search recipes ..."/>
+			</div> <button type="submit" class="searchrecipe" id="insearch" style="width:100px">Cook!</button>
+			</form>
+		</div>
+	  </div>
+	</nav>
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-2 col-sm-3 col-md-2 col-lg-2 sidebar-offcanvas" id="myScrollspy">
+			<ul class="nav nav-pills nav-stacked navbar-inverse" style="font-size: 18px">
+				<h3 class="text-center" style="color: rgb(255,255,255);">User Center</h3>
+				<li><a href="user.html">User Details</a></li>
+                <li class="active"><a href="order.html" id="order">Order Details</a></li>
+                <li><a href="#cookbook">My Cookbook</a></li>
+				<li><a href="#stars">Star Recipes</a></li>
+				<li><a href="#suggestions">Suggestions</a></li>				
+            </ul>
+        </div>
+		<div class="col-lg-9">
+			<div class="page-header text-center">
+				<h1> Order Details </h1>
+			</div>
+			<div class="thumbnail">
+				<div class="dl-horizontal">
+					<dt><strong>Order ID:</strong></dt><dd id="orderid">32-bit hex</dd>
+					<dt><strong>Date:</strong></dt><dd id="orderdate">19-05-2017</dd>
+					<dt><strong>Price:</strong></dt><dd id="price">1000.00 GBP</dd>
+					<dt><strong>Billing Address:</strong></dt><dd>
+						<address id="billingaddress">
+						<strong> Holi & Carina's door, Inc.</strong><br>
+						New Bridewell<br />
+						Bristol, United Kingdom<br />
+						BS1 2BG<br />
+						Phone: (44) 793-303-6323
+						</address>
+					</dd>
+					<dt><strong>Shipping Address:</strong></dt><dd>
+						<address id="shippingaddress">
+						<strong> Holi & Carina's door, Inc.</strong><br>
+						New Bridewell<br />
+						Bristol, United Kingdom<br />
+						BS1 2BG<br />
+						Phone: (44) 793-303-6323
+						</address>
+					</dd>
+				</div>
+			</div>
+			<div class="thumbnail">
+				<div class="dl-horizontal">
+					<dt><strong>Order ID:</strong></dt><dd id="orderid">32-bit hex</dd>
+					<dt><strong>Date:</strong></dt><dd id="orderdate">19-05-2017</dd>
+					<dt><strong>Price:</strong></dt><dd id="price">1000.00 GBP</dd>
+					<dt><strong>Billing Address:</strong></dt><dd>
+						<address id="billingaddress">
+						<strong> Holi & Carina's door, Inc.</strong><br>
+						New Bridewell<br />
+						Bristol, United Kingdom<br />
+						BS1 2BG<br />
+						Phone: (44) 793-303-6323
+						</address>
+					</dd>
+					<dt><strong>Shipping Address:</strong></dt><dd>
+						<address id="shippingaddress">
+						<strong> Holi & Carina's door, Inc.</strong><br>
+						New Bridewell<br />
+						Bristol, United Kingdom<br />
+						BS1 2BG<br />
+						Phone: (44) 793-303-6323
+						</address>
+					</dd>
+				</div>
+			</div>
+		</div>
+	</div><!-- row row-offcanvas row-offcanvas-right -->
+
+    <footer class="footer foot-wrap">
+      <div class="container">
+		<div class="row">
+		 <div class="row-content col-lg-4 col-sm-4 col-xs-6">
+			<p class="text-muted">&copy; 2017 Holi & Carina</p>
+		</div>
+		<div class="row-content col-lg-4 col-sm-4 col-xs-6">
+		<p><a class="text-muted" id="footer_contactus" href="http://dish.allrecipes.com/customer-service/contact-us-2/">Contact Us</a></p>
+			
+		</div>
+		<div class="row-content col-lg-4 col-sm-4 col-xs-6">
+			<p class="text-muted">All Rights Reserved</p>
+			</div>
+		</div>
+      </div>
+    </footer>
+	<!div><!-- /.container-->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

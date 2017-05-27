@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+	
+	<!-- name the title of the page -->
+    <title>Recipe @ Cookbook</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../bootstrap/dist/css/cookbook.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">	
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+	<script> 
+		$(document).ready(function(){
+			var username = localStorage.getItem("username");
+			$('#usrname').text('Hello, ' + username);
+			$('#carousel-490290').carousel({interval:1000});//carosel every second 
+			// multiple id share one click action response
+			$("[name="refresh"],#logout,#usrname,#create,[class="searchrecipe"],[name="aboutus"]").click(function () {
+				if ($(this).value =="#logout"){
+					localStorage.setItem("token", "");
+					localStorage.setItem("usrname", "");
+					$(location).attr('href', '../public/index.html');}
+				else if ($(this).value == "#usrname"){$(location).attr('href','user.html');}
+				else if ($(this).value == "#create"){$(location).attr('href','create.html');}
+				else if ($(this).attr("name") == "aboutus"){$(location).attr('href','aboutus.html');}
+				else if ($(this).attr("name") == "search"){
+					if ($(this).attr("id") == "insearch"){
+					loadStorage.getItem($("input[inrecipe]"))}
+					else {
+					loadStorage.getItem($(this).attr("id",value)}
+					$(location).attr('href','search.html');}
+				else{$(location).reload();}
+			});
+
+		}); 	
+    </script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" name="refresh" id="webtitle" href="admin.html">CukBuk</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+		  <ul class="nav navbar-nav navbar-left" style="padding: 0px 30px 0px;">
+			<li class="active"><a name="refresh" id="homepage" href="admin.html">Home</a></li>
+			<li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+				<li class="dropdown-submenu"><a href="search.html" class="searchrecipe">Cuisine</a>
+				</li>
+				<li><a href="search.html" class="searchrecipe">Material</a></li>
+				<li><a href="search.html" class="searchrecipe">Meal</a></li>
+			  </ul>
+			</li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a id="create" href="./create.html"> Create a recipe </a></li>
+			<li style="display:none;"><a href="user.html" id="usrname"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Username</a></li> 
+			<li style="display:none;"><a href="admin.html" id="logout"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log out</a></li>
+			<li><a href="#signup" data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li> 
+            <li><a href="#login" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li> 
+			<li><a name="aboutus" href="aboutus.html">About us</a></li>
+		  </ul>
+
+		<form class="navbar-form navbar-left" method="get" action="search.html"><!--role="search" -->
+			<div class="form-group form-group-sm" style="padding: 0px 10px 0px;">
+				<input class="form-control" id="inrecipe" type="text" style="width:400px" placeholder="Search recipes ..."/>
+			</div> <button type="submit" class="searchrecipe" id="insearch" style="width:100px">Cook!</button>
+		</form>
+		</div>
+	  </div>
+	</nav>
+  <div class="container">	
+    <!-- Login -->
+    <div id="loginModal" class="modal fade">
+        <div class="modal-dialog center-block" style="width:450px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">User Login</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm" class="form-group" method="post" action="javascript:login2admin();">
+                        <div class="form-group">
+                            <label class="sr-only" for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="pass">Password</label>
+                            <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required minlength=6>
+                        </div>
+						<div class="checkbox">
+							<label><input type="checkbox" value="remember-me"> Remember me</label>
+						</div>
+                        <div class="text-right">
+							<button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+							<button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#registerModal">New user? Register here.</a><br>
+						<a href="" data-toggle="modal" data-dismiss="modal" data-target="#registerModal">forget password?</a>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- Modal -->
+    </div> <!-- /.loginModal -->
+	<!-- Register -->
+    <div id="registerModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog center-block" style="width:450px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+				<h1 class="text-center">Register</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm" class="form-group" method="post" action="javascript:register2admin();">
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input class="form-control" type="email" id="email" placeholder="Example:abc123@gmail.com" required autofocus>
+						</div>
+						<div class="form-group">
+							<label for="usrname">Username</label>
+							<input class="form-control" type="text" id="usrname" placeholder="6-15 letters and numbers" required autofocus minlength=6 maxlength=15>
+						</div>
+						<div class="form-group">
+							<label for="pass">Password</label>
+							<input class="form-control" type="password" id="pass" name="pass" placeholder="At least 6 letters and numbers" required minlength=6>
+						</div>
+						<div class="form-group">
+							<label for="pass2">Password again</label>
+							<input class="form-control" type="password" id="pass2" placeholder="At least 6 letters and numbers" required minlength=6>
+						</div>
+						<div class="text-right">
+							<button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+							<button class="btn btn-primary" type="submit">Register</button>
+						</div>
+						<a href="" data-toggle="modal" data-dismiss="modal" data-target="#loginModal">Already has an account? Login here.</a>
+                    </form>
+                </div>
+            </div>
+        </div><!-- Modal -->
+    </div><!-- /.registerModal -->
+    <div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-2 col-sm-3 col-md-2 col-lg-2 sidebar-offcanvas" id="myScrollspy">
+            <!--<ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">-->
+			<ul class="nav nav-pills nav-stacked navbar-inverse">
+				<h3 class="text-center" style="color: rgb(255,255,255);">Menu</h3>
+				<li style="font-size: 22px;height:50px;"><a href="search.html" class="searchrecipe">All Menu</a></li>
+				<li class="category"><a href="search.html" class="searchrecipe">Cuisine</a></li>
+                <li><a href="search.html" class="searchrecipe">British</a></li>
+                <li><a href="search.html" class="searchrecipe">French</a></li>
+                <li><a href="search.html" class="searchrecipe">Italian</a></li>
+                <li><a href="search.html" class="searchrecipe">Chinese</a></li>
+				<li><a href="search.html" class="searchrecipe">Thai</a></li>
+				<li><a href="search.html" class="searchrecipe">Korean</a></li>
+				<li><a href="search.html" class="searchrecipe">Japanese</a></li>
+				<li class="category"><a href="search.html" class="searchrecipe">Material</a></li>
+                <li><a href="search.html" class="searchrecipe">Beef</a></li>
+                <li><a href="search.html" class="searchrecipe">Chicken</a></li>
+                <li><a href="search.html" class="searchrecipe">Fish</a></li>
+                <li><a href="search.html" class="searchrecipe">Fruit</a></li>
+				<li><a href="search.html" class="searchrecipe">Lamb</a></li>
+				<li><a href="search.html" class="searchrecipe">Pork</a></li>
+				<li><a href="search.html" class="searchrecipe">Vegetables</a></li>
+				<li class="category"><a href="search.html" class="searchrecipe">Meal</a></li>
+                <li><a href="search.html" class="searchrecipe">Starter</a></li>
+                <li><a href="search.html" class="searchrecipe">Main</a></li>
+                <li><a href="search.html" class="searchrecipe">Side</a></li>
+                <li><a href="search.html" class="searchrecipe">Dessert</a></li>
+            </ul>
+        </div>
+	<div class="col-lg-9 col-xs-9 col-sm-9 col-md-9">
+			<div class="page-header">	<!-- recipe name -->
+				<h1 id="recipename">
+					Recipe name
+				</h1> <br>
+				<h4> Creater: <a href="#author" id="creater">Carina</a></h4>
+			</div>
+			<div class="row clearfix">	<!-- food image -->
+				<img src="default1.jpg" class="img-responsive" alt="#recipename"/>
+			</div>
+			<h2> Ingradients </h2>
+			<table class="table" id="ings">	<!-- ingradients -->
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Unit</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td class="name">Beaf</td>
+					<td class="unit">2 kg</td>
+				</tr>
+				<tr>
+					<td class="name">Butter</td>
+					<td class="unit">1 spoon</td>
+				</tr>
+				<tr>
+					<td class="name">Garlic</td>
+					<td class="unit">1 clove</td>
+				</tr>
+				</tbody>
+			</table>
+			<hr />
+			<h2 id="steps">Steps</h2>
+			<div class="steps" id="steps">	<!-- steps -->
+				<ol>
+					<li class="container">
+						::before
+						<p class="text">season the beaf</p>
+						<img src="default1.jpg" class="img-responsive" alt="step1" width="400"/>
+						::after
+					</li>
+					<li class="container">
+						::before
+						<p class="text">heat the oil</p>
+						<img src="default1.jpg" class="img-responsive" alt="step1" width="400"/>
+						::after
+					</li>
+					<li class="container">
+						::before
+						<p class="text">beaf first</p>
+						<img src="default1.jpg" class="img-responsive" alt="step1" width="400"/>
+						::after
+					</li>
+					<li class="container">
+						::before
+						<p class="text">then garlic and butter</p>
+						<img src="default1.jpg" class="img-responsive" alt="step1" width="400"/>
+						::after
+					</li>
+				</ol>		
+			</div>
+			<hr />
+			<div class="container">	<!-- tips -->
+				<h2> Tips </h2>
+				<div class="tips" id="tips">
+					<li> attention!</li>
+					<li> attention again!</li>
+				</div>
+			</div>
+			<hr />
+	</div>
+	</div><!-- row row-offcanvas row-offcanvas-right -->
+
+    <footer class="footer foot-wrap">
+      <div class="container">
+		<div class="row">
+		 <div class="row-content col-lg-4 col-sm-4 col-xs-6">
+			<p class="text-muted">&copy; 2017 Holi & Carina</p>
+		</div>
+		<div class="row-content col-lg-4 col-sm-4 col-xs-6">
+		<p><a class="text-muted" name="aboutus" href="aboutus.html">Contact Us</a></p>	
+		</div>
+		<div class="row-content col-lg-4 col-sm-4 col-xs-6">
+			<p class="text-muted">All Rights Reserved</p>
+			</div>
+		</div>
+      </div>
+    </footer>
+	</div><!-- /.container-->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
