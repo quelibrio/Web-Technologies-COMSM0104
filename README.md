@@ -40,6 +40,8 @@ Secondary Task
 
 -change game to recipy
 
--implement POST SearchRecipy(String) -  returns list of recipyIds
+-implement POST SearchRecipy(String) -  returns list of of recipies with { recipyId, recipyName, recipyPictureLink }
 
 -implment POST GET Recipy(RecipyId)- list of the columns of the table
+
+-make it as different as possible to the previous project
