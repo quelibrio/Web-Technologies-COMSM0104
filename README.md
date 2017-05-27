@@ -38,9 +38,9 @@ Secondary Task
 
 -Reuse USers and authentication
 
--change game to recipy
+-change game to recipy with fields (id, recipyName, description, tip, timeRequired, recipyPictureLink as strings) remove game related names,
 
--implement POST SearchRecipy(String) -  returns list of of recipies with { recipyId, recipyName, recipyPictureLink }
+-implement POST SearchRecipy(String word) -  returns list of of recipies with name containing  (word) { recipyId, recipyName, recipyPictureLink }
 
 -implment POST GET Recipy(RecipyId)- list of the columns of the table
 
