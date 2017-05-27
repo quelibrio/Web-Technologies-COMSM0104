@@ -45,7 +45,6 @@ function cb(err) {
                 var respond = false;
 
                 if (req.headers.origin) {
-                    res.header('Access-Control-Allow-Origin', req.headers.origin);
                     respond = true;
                 }
 
@@ -59,6 +58,7 @@ function cb(err) {
                     respond = true;
                 }
 
+                res.header('Access-Control-Allow-Origin', '*');
                 if (respond && req.method.toUpperCase() === 'OPTIONS') {
                     res.sendStatus(200);
                 } else {

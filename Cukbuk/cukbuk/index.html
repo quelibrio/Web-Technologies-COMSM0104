@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">	
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-      <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/script.js"></script>
     <script type="text/javascript">
@@ -49,78 +49,81 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>	
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="container-fluid">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </button>
-		  <a class="navbar-brand" name="refresh" id="webtitle" href="admin.html">CukBuk</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-		  <ul class="nav navbar-nav navbar-left" style="padding: 0px 30px 0px;">
-			<li class="active"><a name="refresh" id="homepage" href="admin.html">Home</a></li>
-			<li class="dropdown">
-			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
-			  <ul class="dropdown-menu">
-				<li class="dropdown-submenu"><a href="search.html" class="searchrecipe">Cuisine</a>
-				</li>
-				<li><a href="search.html" class="searchrecipe">Material</a></li>
-				<li><a href="search.html" class="searchrecipe">Meal</a></li>
-			  </ul>
-			</li>
-		  </ul>
-		  <ul class="nav navbar-nav navbar-right">
-			<li><a id="create" href="./create.html"> Create a recipe </a></li>
-			<li id="inuser"><a href="user.html" ><span class="glyphicon glyphicon-user" id="username" aria-hidden="true"></span>Username</a></li> 
-		    <li class="active" id="logout"><a>Logout</a></li>
-			<li id="outup" style="display:none;"><a href="#" data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li> 
-            <li id="outin" style="display:none;"><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li> 
-			<li><a name="aboutus" href="aboutus.html">About us</a></li>
-		  </ul>
+  <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" name="refresh" id="webtitle" href="admin.html">CukBuk</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-left" style="padding: 0px 30px 0px;">
+                  <li class="active"><a name="refresh" id="homepage" href="admin.html">Home</a></li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li class="dropdown-submenu"><a href="search.html" class="searchrecipe">Cuisine</a>
+                          </li>
+                          <li><a href="search.html" class="searchrecipe">Material</a></li>
+                          <li><a href="search.html" class="searchrecipe">Meal</a></li>
+                      </ul>
+                  </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a id="create" href="./create.html"> Create a recipe </a></li>
+                  <li id="inuser"><a href="user.html"><span class="glyphicon glyphicon-user" id="username" aria-hidden="true"></span>Username</a></li>
+                  <li class="active" id="logout"><a>Logout</a></li>
+                  <li id="outup" style="display: none;"><a href="#" data-toggle="modal" data-target="#registerModal"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up</a></li>
+                  <li id="outin" style="display: none;"><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
+                  <li><a name="aboutus" href="aboutus.html">About us</a></li>
+              </ul>
 
-		<form class="navbar-form navbar-left" ><!-- role="search" method="get" action="javascript:search();"-->
-			<div class="form-group form-group-sm" style="padding: 0px 10px 0px;">
-				<input class="form-control" id="inrecipe" type="text" style="width:400px" placeholder="Search recipes ..."/>
-		    </div> <button type="submit" class="searchrecipe" id="insearch" style="width: 100px">Cook!</button>
-            <div id="search_result"></div>
-		</form>
-		</div>
-	  </div>
-	</nav>
+              <div class="navbar-form navbar-left"><!-- role="search" method="get" action="javascript:search();"-->
+                  <div class="form-group form-group-sm" style="padding: 0px 10px 0px;">
+                      <input class="form-control" id="inrecipe" type="text" style="width: 400px" placeholder="Search recipes ..."/>
+                  </div>
+                  <button class="btn btn-primary searchrecipe" id="insearch" style="width: 100px">Cook!</button>
+
+              </div>
+          </div>
+      </div>
+  </nav>
+      <div id="search_result"></div>
   <div class="container">	
     <div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-xs-2 col-sm-3 col-md-2 col-lg-2 sidebar-offcanvas" id="myScrollspy">
             <!--<ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">-->
-			<ul class="nav nav-pills nav-stacked navbar-inverse">
-				<h3 class="text-center" style="color: rgb(255,255,255);">Menu</h3>
-				<li style="font-size: 22px;height:50px;"><a href="search.html" class="searchrecipe">All Menu</a></li>
-				<li class="category"><a href="search.html" class="searchrecipe">Cuisine</a></li>
-                <li><a href="search.html" class="searchrecipe">British</a></li>
-                <li><a href="search.html" class="searchrecipe">French</a></li>
-                <li><a href="search.html" class="searchrecipe">Italian</a></li>
-                <li><a href="search.html" class="searchrecipe">Chinese</a></li>
-				<li><a href="search.html" class="searchrecipe">Thai</a></li>
-				<li><a href="search.html" class="searchrecipe">Korean</a></li>
-				<li><a href="search.html" class="searchrecipe">Japanese</a></li>
-				<li class="category"><a href="search.html" class="searchrecipe">Material</a></li>
-                <li><a href="search.html" class="searchrecipe">Beef</a></li>
-                <li><a href="search.html" class="searchrecipe">Chicken</a></li>
-                <li><a href="search.html" class="searchrecipe">Fish</a></li>
-                <li><a href="search.html" class="searchrecipe">Fruit</a></li>
-				<li><a href="search.html" class="searchrecipe">Lamb</a></li>
-				<li><a href="search.html" class="searchrecipe">Pork</a></li>
-				<li><a href="search.html" class="searchrecipe">Vegetables</a></li>
-				<li class="category"><a href="search.html" class="searchrecipe">Meal</a></li>
-                <li><a href="search.html" class="searchrecipe">Starter</a></li>
-                <li><a href="search.html" class="searchrecipe">Main</a></li>
-                <li><a href="search.html" class="searchrecipe">Side</a></li>
-                <li><a href="search.html" class="searchrecipe">Dessert</a></li>
-            </ul>
+		    <ul class="nav nav-pills nav-stacked navbar-inverse">
+                
+		        <h3 class="text-center" style="color: rgb(255, 255, 255);">Menu</h3>
+		        <li style="font-size: 22px; height: 50px;"><a href="search.html" class="searchrecipe">All Menu</a></li>
+		        <li class="category"><a href="search.html" class="searchrecipe">Cuisine</a></li>
+		        <li><a href="search.html" class="searchrecipe">British</a></li>
+		        <li><a href="search.html" class="searchrecipe">French</a></li>
+		        <li><a href="search.html" class="searchrecipe">Italian</a></li>
+		        <li><a href="search.html" class="searchrecipe">Chinese</a></li>
+		        <li><a href="search.html" class="searchrecipe">Thai</a></li>
+		        <li><a href="search.html" class="searchrecipe">Korean</a></li>
+		        <li><a href="search.html" class="searchrecipe">Japanese</a></li>
+		        <li class="category"><a href="search.html" class="searchrecipe">Material</a></li>
+		        <li><a href="search.html" class="searchrecipe">Beef</a></li>
+		        <li><a href="search.html" class="searchrecipe">Chicken</a></li>
+		        <li><a href="search.html" class="searchrecipe">Fish</a></li>
+		        <li><a href="search.html" class="searchrecipe">Fruit</a></li>
+		        <li><a href="search.html" class="searchrecipe">Lamb</a></li>
+		        <li><a href="search.html" class="searchrecipe">Pork</a></li>
+		        <li><a href="search.html" class="searchrecipe">Vegetables</a></li>
+		        <li class="category"><a href="search.html" class="searchrecipe">Meal</a></li>
+		        <li><a href="search.html" class="searchrecipe">Starter</a></li>
+		        <li><a href="search.html" class="searchrecipe">Main</a></li>
+		        <li><a href="search.html" class="searchrecipe">Side</a></li>
+		        <li><a href="search.html" class="searchrecipe">Dessert</a></li>
+		    </ul>
         </div>
 	<div class="col-lg-9 col-xs-9 col-sm-9 col-md-9">
 	<div class="row clearfix">
@@ -252,9 +255,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   </body>
 </html>

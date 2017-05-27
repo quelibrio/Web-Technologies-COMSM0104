@@ -16,12 +16,14 @@ function search(){
             Authorization: 'Bearer ' + token
         },
         success: function(response) {
-            $.each(response.result, function (key, obj) {
-                $('<li />', {
-                    text: obj.recipyId + " " + obj.recipyName + "" + obj.recipyPictureLink
-                }).appendTo('#search_result')
-            });
-            // $(location).attr('href', 'search.html');
+            var obj = response.result;
+            if (obj != null) {
+                $("#search_result").html($('<li>', {
+                    text: obj.name + " " + obj.description + "" + obj.id
+                }));
+            } else {
+                $("#search_result").html('No results found');
+            }
         },
         error: function(xhr, status, error) {
             //var err = eval("(" + xhr.responseText + ")");
