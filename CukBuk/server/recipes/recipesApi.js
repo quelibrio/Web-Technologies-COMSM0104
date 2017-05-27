@@ -39,6 +39,7 @@ module.exports = function (app, responders, sequelize) {
 
     recipesRouter.get('/name/:name', (req, res, next) => Recipe.findRecipeByName(req.params.name).then(responders.respondResult.bind(null, res)).catch(next));
     recipesRouter.get('/id/:id', (req, res, next) => Recipe.findRecipeById(req.params.id).then(responders.respondResult.bind(null, res)).catch(next));
+    recipesRouter.post('/', (req, res, next) => Recipe.create(req.body).then(responders.respondResult.bind(null, res)).catch(next));
 
     app.use('/recipes', responders.checkAuthentication('user'), recipesRouter);
 };
